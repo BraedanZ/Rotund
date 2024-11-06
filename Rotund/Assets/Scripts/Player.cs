@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float speed;
 
     private bool small = false;
+    private bool big = false;
     private Vector3 scaleChange;
     void Start()
     {
@@ -38,11 +39,37 @@ public class Player : MonoBehaviour
     public void Small() {
         if (small) {
             return;
+        } else if (big) {
+            player.transform.localScale -= scaleChange;
+            rigidBody.mass = 0.7f;
+            camera.Normal();
+            small = false;
+            big = false;
         } else {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = 0.35f;
             camera.Small();
+            big = false;
             small = true;
+        }
+    }
+
+    public void Big() {
+        if (big) {
+            return;
+        } else if (small) {
+            player.transform.localScale += scaleChange;
+            rigidBody.mass = 0.7f;
+            camera.Normal();
+            small = false;
+            big = false;
+        } 
+        else {
+            player.transform.localScale += scaleChange;
+            rigidBody.mass = 1.4f;
+            camera.Big();
+            small = false;
+            big = true;
         }
     }
 }
