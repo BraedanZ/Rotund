@@ -12,6 +12,8 @@ public class CameraFollow : MonoBehaviour
 
     public Camera cam;
 
+    public Color small;
+
     void Start () {
         cam = GetComponent<Camera>();
         SnapCamera();
@@ -29,5 +31,9 @@ public class CameraFollow : MonoBehaviour
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
+    }
+
+    public void Small() {
+        cam.backgroundColor = small;
     }
 }
