@@ -786,6 +786,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   offset: {x: 0, y: 3, z: -10}
   cam: {fileID: 0}
+  small: {r: 0.7137255, g: 0.9764706, b: 1, a: 0}
 --- !u!1001 &1613250172
 PrefabInstance:
   m_ObjectHideFlags: 0
