@@ -13,6 +13,8 @@ public class CameraFollow : MonoBehaviour
     public Camera cam;
 
     public Color small;
+    public Color big;
+    public Color normal;
 
     void Start () {
         cam = GetComponent<Camera>();
@@ -35,5 +37,13 @@ public class CameraFollow : MonoBehaviour
 
     public void Small() {
         cam.backgroundColor = small;
+    }
+
+    public void Big() {
+        cam.backgroundColor = big;
+    }
+
+    public void Normal() {
+        cam.backgroundColor = normal;
     }
 }
