@@ -32,6 +32,12 @@ public class Player : MonoBehaviour
     public float bigSpeed = 12.5f;
     public float extraBigSpeed = 15f;
 
+    public float extraSmallGravity = 0.5f;
+    public float smallGravity = 0.75f;
+    public float normalGravity = 1f;
+    public float bigGravity = 1.25f;
+    public float extraBigGravity = 1.5f;
+
     void Start()
     {
         player = this;
@@ -59,6 +65,7 @@ public class Player : MonoBehaviour
         } else if (small) {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = extraSmallMass;
+            rigidBody.gravityScale = extraSmallGravity;
             camera.ExtraSmall();
             extraSmall = true;
             small = false;
@@ -66,6 +73,7 @@ public class Player : MonoBehaviour
         } else if (normal) {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = smallMass;
+            rigidBody.gravityScale = smallGravity;
             camera.Small();
             small = true;
             normal = false;
@@ -73,6 +81,7 @@ public class Player : MonoBehaviour
         } else if (big) {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = normalMass;
+            rigidBody.gravityScale = normalGravity;
             camera.Normal();
             normal = true;
             big = false;
@@ -80,6 +89,7 @@ public class Player : MonoBehaviour
         } else {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = bigMass;
+            rigidBody.gravityScale = bigGravity;
             camera.Big();
             big = true;
             extraBig = false;
@@ -93,6 +103,7 @@ public class Player : MonoBehaviour
         } else if (big) {
             player.transform.localScale += scaleChange;
             rigidBody.mass = extraBigMass;
+            rigidBody.gravityScale = extraBigGravity;
             camera.ExtraBig();
             extraBig = true;
             big = false;
@@ -100,6 +111,7 @@ public class Player : MonoBehaviour
         } else if (normal) {
             player.transform.localScale += scaleChange;
             rigidBody.mass = bigMass;
+            rigidBody.gravityScale = bigGravity;
             camera.Big();
             big = true;
             normal = false;
@@ -107,6 +119,7 @@ public class Player : MonoBehaviour
         } else if (small) {
             player.transform.localScale += scaleChange;
             rigidBody.mass = normalMass;
+            rigidBody.gravityScale = normalGravity;
             camera.Normal();
             normal = true;
             small = false;
@@ -114,6 +127,7 @@ public class Player : MonoBehaviour
         } else {
             player.transform.localScale += scaleChange;
             rigidBody.mass = smallMass;
+            rigidBody.gravityScale = smallGravity;
             camera.Small();
             small = true;
             extraSmall = false;
