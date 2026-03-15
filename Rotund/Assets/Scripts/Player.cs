@@ -20,17 +20,17 @@ public class Player : MonoBehaviour
 
     private Vector3 scaleChange;
 
-    private float extraSmallMass = 0.25f;
-    private float smallMass = 0.5f;
-    private float normalMass = 1f;
-    private float bigMass = 2f;
-    private float extraBigMass = 4f;
+    public float extraSmallMass = 0.25f;
+    public float smallMass = 0.5f;
+    public float normalMass = 1f;
+    public float bigMass = 2f;
+    public float extraBigMass = 4f;
 
-    private float extraSmallSpeed = 5f;
-    private float smallSpeed = 7.5f;
-    private float normalSpeed = 10f;
-    private float bigSpeed = 12.5f;
-    private float extraBigSpeed = 15f;
+    public float extraSmallSpeed = 5f;
+    public float smallSpeed = 7.5f;
+    public float normalSpeed = 10f;
+    public float bigSpeed = 12.5f;
+    public float extraBigSpeed = 15f;
 
     void Start()
     {
