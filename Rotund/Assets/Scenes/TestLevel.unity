@@ -804,6 +804,10 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8958506226381488928, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
+      propertyPath: extraSmallMass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8958506226381488929, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
       propertyPath: m_Mass
       value: 1
