@@ -12,9 +12,20 @@ public class Player : MonoBehaviour
     float input;
     public float speed;
 
+    private bool extraSmall = false;
     private bool small = false;
+    private bool normal = true;
     private bool big = false;
+    private bool extraBig = false;
+
     private Vector3 scaleChange;
+
+    private float extraSmallMass = 0.1f;
+    private float smallMass = 0.3f;
+    private float normalMass = 1f;
+    private float bigMass = 3f;
+    private float extraBigMass = 10f;
+
     void Start()
     {
         player = this;
@@ -37,20 +48,32 @@ public class Player : MonoBehaviour
     }
 
     public void Small() {
-        if (small) {
+        if (extraSmall) {
             return;
+        } else if (small) {
+            player.transform.localScale -= scaleChange;
+            rigidBody.mass = extraSmallMass;
+            camera.ExtraSmall();
+            extraSmall = true;
+            small = false;
+        } else if (normal) {
+            player.transform.localScale -= scaleChange;
+            rigidBody.mass = smallMass;
+            camera.Small();
+            small = true;
+            normal = false;
         } else if (big) {
             player.transform.localScale -= scaleChange;
-            rigidBody.mass = 0.7f;
+            rigidBody.mass = normalMass;
             camera.Normal();
-            small = false;
+            normal = true;
             big = false;
         } else {
             player.transform.localScale -= scaleChange;
-            rigidBody.mass = 0.35f;
-            camera.Small();
-            big = false;
-            small = true;
+            rigidBody.mass = bigMass;
+            camera.Big();
+            big = true;
+            extraBig = false;
         }
     }
 

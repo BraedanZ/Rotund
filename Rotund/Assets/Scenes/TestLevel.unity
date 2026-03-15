@@ -798,6 +798,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8958506226381488929, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958506226381488929, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
+      propertyPath: m_LinearDrag
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8958506226381488931, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
       propertyPath: m_Name
       value: Player
