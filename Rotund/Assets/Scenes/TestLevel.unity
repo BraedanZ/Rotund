@@ -788,9 +788,11 @@ MonoBehaviour:
   smoothSpeed: 0.125
   offset: {x: 0, y: 3, z: -10}
   cam: {fileID: 0}
+  extraSmall: {r: 0.9239456, g: 1, b: 0.6084906, a: 0}
   small: {r: 0.7137255, g: 0.9764706, b: 1, a: 0}
-  big: {r: 0.759384, g: 0.4761481, b: 0.9433962, a: 0}
   normal: {r: 1, g: 1, b: 1, a: 0}
+  big: {r: 0.759384, g: 0.4761481, b: 0.9433962, a: 0}
+  extraBig: {r: 0.9433962, g: 0.33374867, b: 0.3951253, a: 0}
 --- !u!1001 &1613250172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -798,13 +800,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8958506226381488928, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8958506226381488929, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8958506226381488929, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
       propertyPath: m_LinearDrag
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958506226381488929, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8958506226381488931, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
       propertyPath: m_Name

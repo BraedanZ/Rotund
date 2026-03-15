@@ -20,17 +20,23 @@ public class Player : MonoBehaviour
 
     private Vector3 scaleChange;
 
-    private float extraSmallMass = 0.1f;
-    private float smallMass = 0.3f;
+    private float extraSmallMass = 0.25f;
+    private float smallMass = 0.5f;
     private float normalMass = 1f;
-    private float bigMass = 3f;
-    private float extraBigMass = 10f;
+    private float bigMass = 2f;
+    private float extraBigMass = 4f;
+
+    private float extraSmallSpeed = 5f;
+    private float smallSpeed = 7.5f;
+    private float normalSpeed = 10f;
+    private float bigSpeed = 12.5f;
+    private float extraBigSpeed = 15f;
 
     void Start()
     {
         player = this;
         rigidBody = GetComponent<Rigidbody2D>();
-        scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
+        scaleChange = new Vector3(0.125f, 0.125f, 0.125f);
 
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
     }
@@ -56,43 +62,62 @@ public class Player : MonoBehaviour
             camera.ExtraSmall();
             extraSmall = true;
             small = false;
+            speed = extraSmallSpeed;
         } else if (normal) {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = smallMass;
             camera.Small();
             small = true;
             normal = false;
+            speed = smallSpeed;
         } else if (big) {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = normalMass;
             camera.Normal();
             normal = true;
             big = false;
+            speed = normalSpeed;
         } else {
             player.transform.localScale -= scaleChange;
             rigidBody.mass = bigMass;
             camera.Big();
             big = true;
             extraBig = false;
+            speed = bigSpeed;
         }
     }
 
     public void Big() {
-        if (big) {
+        if (extraBig) {
             return;
+        } else if (big) {
+            player.transform.localScale += scaleChange;
+            rigidBody.mass = extraBigMass;
+            camera.ExtraBig();
+            extraBig = true;
+            big = false;
+            speed = extraBigSpeed;
+        } else if (normal) {
+            player.transform.localScale += scaleChange;
+            rigidBody.mass = bigMass;
+            camera.Big();
+            big = true;
+            normal = false;
+            speed = bigSpeed;
         } else if (small) {
             player.transform.localScale += scaleChange;
-            rigidBody.mass = 0.7f;
+            rigidBody.mass = normalMass;
             camera.Normal();
+            normal = true;
             small = false;
-            big = false;
-        } 
-        else {
+            speed = normalSpeed;
+        } else {
             player.transform.localScale += scaleChange;
-            rigidBody.mass = 1.4f;
-            camera.Big();
-            small = false;
-            big = true;
+            rigidBody.mass = smallMass;
+            camera.Small();
+            small = true;
+            extraSmall = false;
+            speed = smallSpeed;
         }
     }
 }
