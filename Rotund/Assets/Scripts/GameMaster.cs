@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
+    public Player player;
+
+    public Text distanceText;
+
+    private float distance;
+    private string distanceStr;
 
     public Text timeCounter;
 
@@ -27,6 +33,7 @@ public class GameMaster : MonoBehaviour
     }
 
     private void SetStartVariables() {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         gamePlaying = true;
         startTime = Time.time;
     }
@@ -34,6 +41,7 @@ public class GameMaster : MonoBehaviour
     void Update()
     {
         UpdateTimer();
+        UpdateDistance();
     }
 
     private void UpdateTimer() {
@@ -43,6 +51,14 @@ public class GameMaster : MonoBehaviour
 
             timePlayingStr = timePlaying.ToString("mm':'ss'.'ff");
             timeCounter.text = timePlayingStr;
+        }
+    }
+
+    private void UpdateDistance() {
+        if (player.transform.position.x > distance) {
+            distance = (float)Math.Round(player.transform.position.x);
+            distanceStr = distance.ToString() + "m";
+            distanceText.text = distanceStr;
         }
     }
 }
