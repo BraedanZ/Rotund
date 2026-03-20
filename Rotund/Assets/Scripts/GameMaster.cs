@@ -42,6 +42,21 @@ public class GameMaster : MonoBehaviour
     {
         UpdateTimer();
         UpdateDistance();
+        DetectInput();
+    }
+
+    private void DetectInput() {
+        if (Input.GetKeyDown(KeyCode.R)) {
+            Restart();
+        }
+    }
+
+    public void Restart() {
+        player.Restart();
+        startTime = Time.time;
+        distance = 0f;
+        distanceStr = distance.ToString() + "m";
+        distanceText.text = distanceStr;
     }
 
     private void UpdateTimer() {

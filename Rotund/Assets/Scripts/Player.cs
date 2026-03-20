@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     private new CameraFollow camera;
 
+    public Vector3 startPosition;
+
     float input;
     public float speed;
 
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
 
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 
+        startPosition = player.transform.position;
         player.transform.localScale -= scaleChange;
         rigidBody.mass = smallMass;
         rigidBody.gravityScale = smallGravity;
@@ -63,6 +66,13 @@ public class Player : MonoBehaviour
     void Update() {
         ChangeSize();
     } 
+
+    public void Restart() {
+        Small();
+        player.transform.position = startPosition;
+        rigidBody.velocity = Vector3.zero;
+        rigidBody.angularVelocity = 0f;
+    }
 
     private void Move() 
     {
