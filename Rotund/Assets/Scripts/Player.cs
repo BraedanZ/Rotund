@@ -50,13 +50,26 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-    }       
+        // ChangeSize();
+    }      
+
+    void Update() {
+        ChangeSize();
+    } 
 
     private void Move() 
     {
         input = Input.GetAxisRaw("Horizontal");
         rigidBody.AddForce(new Vector2(1, 0) * input * speed);
     //     rigidBody.AddTorque(-(input), ForceMode2D.Force);
+    }
+
+    private void ChangeSize() {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            Big();
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            Small();
+        }
     }
 
     public void Small() {
