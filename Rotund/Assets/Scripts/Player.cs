@@ -82,11 +82,18 @@ public class Player : MonoBehaviour
     }
 
     private void ChangeSize() {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            Big();
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            Small();
-        }
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (small) {
+                Big();
+            } else {
+                Small();
+            }
+        } 
+        // else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        //     Big();
+        // } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        //     Small();
+        // }
     }
 
     public void Small() {
