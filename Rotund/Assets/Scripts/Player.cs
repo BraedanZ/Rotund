@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        // ChangeSize();
     }      
 
     void Update() {
@@ -61,7 +60,6 @@ public class Player : MonoBehaviour
     {
         input = Input.GetAxisRaw("Horizontal");
         rigidBody.AddForce(new Vector2(1, 0) * input * speed);
-    //     rigidBody.AddTorque(-(input), ForceMode2D.Force);
     }
 
     private void ChangeSize() {
