@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     Player player;
     Rigidbody2D rigidBody;
 
+    public GameMaster gameMaster;
+
     private new CameraFollow camera;
 
     public Vector3 startPosition;
@@ -44,6 +46,8 @@ public class Player : MonoBehaviour
     {
         player = this;
         rigidBody = GetComponent<Rigidbody2D>();
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+
         scaleChange = new Vector3(0.25f, 0.25f, 0.25f);
 
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
@@ -65,6 +69,7 @@ public class Player : MonoBehaviour
 
     void Update() {
         ChangeSize();
+        TestMovement();
     } 
 
     public void Restart() {
@@ -79,6 +84,12 @@ public class Player : MonoBehaviour
         // input = Input.GetAxisRaw("Horizontal");
         // rigidBody.AddForce(new Vector2(1, 0) * input * speed);
         rigidBody.AddForce(new Vector2(1, 0) * 1.0f * speed);
+    }
+
+    private void TestMovement() {
+        if (rigidBody.velocity.x <= 0 && player.transform.position.x > 0) {
+            gameMaster.Lose();
+        }
     }
 
     private void ChangeSize() {

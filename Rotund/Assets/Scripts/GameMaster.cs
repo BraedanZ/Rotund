@@ -21,7 +21,7 @@ public class GameMaster : MonoBehaviour
     TimeSpan timePlaying;
     private string timePlayingStr;
 
-    public GameObject winPanel;
+    public GameObject runEndPanel;
 
     public GameObject gameOverlay;
 
@@ -53,10 +53,21 @@ public class GameMaster : MonoBehaviour
 
     public void Restart() {
         player.Restart();
+        ResetVariables();
+    }
+
+    private void ResetVariables() {
         startTime = Time.time;
         distance = 0f;
         distanceStr = distance.ToString() + "m";
         distanceText.text = distanceStr;
+        gameOverlay.SetActive(true);
+        runEndPanel.SetActive(false);
+    }
+
+    public void Lose() {
+        gameOverlay.SetActive(false);
+        runEndPanel.SetActive(true);
     }
 
     private void UpdateTimer() {

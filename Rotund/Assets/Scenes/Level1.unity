@@ -3238,7 +3238,7 @@ GameObject:
   - component: {fileID: 1860005695}
   m_Layer: 0
   m_Name: GameMaster
-  m_TagString: Untagged
+  m_TagString: GameMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3260,7 +3260,7 @@ MonoBehaviour:
   timeCounter: {fileID: 1485502545}
   elapsedTime: 0
   loadedTime: 0
-  winPanel: {fileID: 0}
+  runEndPanel: {fileID: 365031688}
   gameOverlay: {fileID: 655300627}
 --- !u!4 &1860005696
 Transform:
