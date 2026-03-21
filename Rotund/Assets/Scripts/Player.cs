@@ -115,6 +115,8 @@ public class Player : MonoBehaviour
             if (mousePosition.x > Screen.width / 2)
             {
                 ChangeSize();
+            } else if (mousePosition.y > Screen.height / 2) {
+                gameMaster.Restart();
             }
         }
         // else if (Input.GetKeyDown(KeyCode.UpArrow)) {
