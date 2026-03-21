@@ -88,7 +88,9 @@ public class Player : MonoBehaviour
     {
         // input = Input.GetAxisRaw("Horizontal");
         // rigidBody.AddForce(new Vector2(1, 0) * input * speed);
-        rigidBody.AddForce(new Vector2(1, 0) * 1.0f * speed);
+        if (player.transform.position.x < 0) {
+            rigidBody.AddForce(new Vector2(1, 0) * 1.0f * speed);
+        }
     }
 
     private void TestMovement() {
