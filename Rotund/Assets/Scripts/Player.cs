@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     float input;
     public float speed;
 
+    private bool lost;
+
     // private bool extraSmall = false;
     private bool small = true;
     // private bool normal = true;
@@ -60,6 +62,8 @@ public class Player : MonoBehaviour
         small = true;
         big = false;
         speed = smallSpeed;
+
+        lost = false;
     }
 
     void FixedUpdate()
@@ -77,6 +81,7 @@ public class Player : MonoBehaviour
         player.transform.position = startPosition;
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = 0f;
+        lost = false;
     }
 
     private void Move() 
@@ -88,7 +93,14 @@ public class Player : MonoBehaviour
 
     private void TestMovement() {
         if (rigidBody.velocity.x <= 0 && player.transform.position.x > 0) {
-            gameMaster.Lose();
+            Lose();
+        }
+    }
+
+    public void Lose() {
+        if (!lost) {
+                gameMaster.Lose();
+                lost = true;
         }
     }
 
