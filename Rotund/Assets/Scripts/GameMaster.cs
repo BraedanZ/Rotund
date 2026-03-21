@@ -21,11 +21,26 @@ public class GameMaster : MonoBehaviour
     TimeSpan timePlaying;
     private string timePlayingStr;
 
-    public GameObject winPanel;
+    public GameObject runEndPanel;
 
     public GameObject gameOverlay;
 
     public bool gamePlaying { get; private set; }
+
+    private string runEndDistanceStr;
+    public Text runEndDistanceText;
+
+    private string runEndTimeStr;
+    public Text runEndTimeText;
+
+    private float bestDistance;
+    private string bestDistanceStr;
+
+    private TimeSpan bestTime;
+    private string bestTimeStr;
+
+    public Text bestDistanceText;
+    public Text bestTimeCounter;
 
     void Start()
     {
@@ -36,6 +51,7 @@ public class GameMaster : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         gamePlaying = true;
         startTime = Time.time;
+        bestDistance = 0f;
     }
 
     void Update()
@@ -53,10 +69,51 @@ public class GameMaster : MonoBehaviour
 
     public void Restart() {
         player.Restart();
+        ResetVariables();
+    }
+
+
+    private void ResetVariables() {
         startTime = Time.time;
         distance = 0f;
         distanceStr = distance.ToString() + "m";
         distanceText.text = distanceStr;
+        gameOverlay.SetActive(true);
+        runEndPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void Lose() {
+        gameOverlay.SetActive(false);
+        runEndPanel.SetActive(true);
+        Time.timeScale = 0f;
+        StoreBestRun();
+        UpdateCurrentRun();
+    }
+
+    private void StoreBestRun() {
+        if (distance > bestDistance) {
+            bestDistance = distance;
+            bestDistanceStr = "Best Run Distance: " + bestDistance.ToString() + "m";
+            bestDistanceText.text = bestDistanceStr;
+
+            bestTime = timePlaying;
+            bestTimeStr = "Best Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
+            bestTimeCounter.text = bestTimeStr;
+        }
+        if (distance == bestDistance && timePlaying < bestTime) {
+            bestTime = timePlaying;
+            bestTimeStr = "Best Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
+            bestTimeCounter.text = bestTimeStr;
+        }
+    }
+
+    private void UpdateCurrentRun() {
+        runEndDistanceStr = "Run Distance : " + distance + "m";
+        runEndDistanceText.text = runEndDistanceStr;
+
+        runEndTimeStr = "Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
+        runEndTimeText.text = runEndTimeStr;
     }
 
     private void UpdateTimer() {

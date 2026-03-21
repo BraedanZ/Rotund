@@ -7,12 +7,16 @@ public class Player : MonoBehaviour
     Player player;
     Rigidbody2D rigidBody;
 
+    public GameMaster gameMaster;
+
     private new CameraFollow camera;
 
     public Vector3 startPosition;
 
     float input;
     public float speed;
+
+    private bool lost;
 
     // private bool extraSmall = false;
     private bool small = true;
@@ -44,6 +48,8 @@ public class Player : MonoBehaviour
     {
         player = this;
         rigidBody = GetComponent<Rigidbody2D>();
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+
         scaleChange = new Vector3(0.25f, 0.25f, 0.25f);
 
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
@@ -56,6 +62,8 @@ public class Player : MonoBehaviour
         small = true;
         big = false;
         speed = smallSpeed;
+
+        lost = false;
     }
 
     void FixedUpdate()
@@ -65,6 +73,7 @@ public class Player : MonoBehaviour
 
     void Update() {
         ChangeSize();
+        TestMovement();
     } 
 
     public void Restart() {
@@ -72,6 +81,7 @@ public class Player : MonoBehaviour
         player.transform.position = startPosition;
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = 0f;
+        lost = false;
     }
 
     private void Move() 
@@ -79,6 +89,19 @@ public class Player : MonoBehaviour
         // input = Input.GetAxisRaw("Horizontal");
         // rigidBody.AddForce(new Vector2(1, 0) * input * speed);
         rigidBody.AddForce(new Vector2(1, 0) * 1.0f * speed);
+    }
+
+    private void TestMovement() {
+        if (rigidBody.velocity.x <= 0 && player.transform.position.x > 0) {
+            Lose();
+        }
+    }
+
+    public void Lose() {
+        if (!lost) {
+                gameMaster.Lose();
+                lost = true;
+        }
     }
 
     private void ChangeSize() {
