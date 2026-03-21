@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameMaster
+  - BigSound1
+  - BigSound2
+  - BigSound3
+  - BigSound4
+  - BigSound5
+  - SmallSound1
+  - SmallSound2
+  - SmallSound3
+  - SmallSound4
+  - SmallSound5
+  - DieSound
   layers:
   - Default
   - TransparentFX
