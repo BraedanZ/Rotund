@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     }      
 
     void Update() {
-        ChangeSize();
+        DetectInput();
         TestMovement();
     } 
 
@@ -106,19 +106,30 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ChangeSize() {
+    private void DetectInput() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            if (small) {
-                Big();
-            } else {
-                Small();
+            ChangeSize();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            Vector3 mousePosition = Input.mousePosition;
+            if (mousePosition.x > Screen.width / 2)
+            {
+                ChangeSize();
             }
-        } 
+        }
         // else if (Input.GetKeyDown(KeyCode.UpArrow)) {
         //     Big();
         // } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
         //     Small();
         // }
+    }
+
+    private void ChangeSize() {
+        if (small) {
+            Big();
+        } else {
+            Small();
+        }
     }
 
     public void Small() {
