@@ -391,7 +391,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 556241068}
+  targetRB: {fileID: 1134991204}
   smoothSpeed: 0.125
+  minSpeed: 0
+  maxSpeed: 50
+  minZoom: 5
+  maxZoom: 15
   offset: {x: 5, y: 0.5, z: -10}
   cam: {fileID: 522615440}
   small: {r: 0.7783019, g: 0.9817782, b: 1, a: 0}
@@ -1839,6 +1844,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8304711367108865007, guid: 5e2a9b62a2c681a48bfba11440118380, type: 3}
   m_PrefabInstance: {fileID: 1105625547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1134991204 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8958506226381488929, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
+  m_PrefabInstance: {fileID: 8958506226747621242}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1181564438
 GameObject:
@@ -4995,7 +5005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8958506226381488928, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
       propertyPath: bigGravity
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8958506226381488928, guid: 72b5108b334fee84ba350c100dcbb4bd, type: 3}
       propertyPath: normalMass

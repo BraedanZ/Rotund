@@ -6,7 +6,21 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
 
+    public Rigidbody2D targetRB;
+
     public float smoothSpeed = 0.125f;
+
+    public float minSpeed;
+
+    public float maxSpeed;
+
+    public float minZoom;
+
+    public float maxZoom;
+
+    private float zoomVelocity;
+
+    public float zoomSmoothTime = 0.5f;
 
     public Vector3 offset;
 
@@ -26,6 +40,7 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate () {
         SmoothCameraFollow();
+        SmoothCameraZoom();
     }
 
     public void SnapCamera () {
@@ -36,6 +51,14 @@ public class CameraFollow : MonoBehaviour
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
+    }
+
+    private void SmoothCameraZoom() {
+        float targetSpeed = targetRB.velocity.magnitude;
+        float zoomFactor = Mathf.InverseLerp(minSpeed, maxSpeed, targetSpeed);
+        float targetZoom = Mathf.Lerp(minZoom, maxZoom, zoomFactor);
+
+        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetZoom, ref zoomVelocity, zoomSmoothTime);
     }
 
     // public void ExtraSmall() {
