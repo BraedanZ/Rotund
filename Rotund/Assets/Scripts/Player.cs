@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = 0f;
         lost = false;
+        camera.SnapCamera();
     }
 
     private void Move() 
