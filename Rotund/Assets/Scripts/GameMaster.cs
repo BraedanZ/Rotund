@@ -14,7 +14,8 @@ public class GameMaster : MonoBehaviour
     private float distance;
     private string distanceStr;
 
-    public Text timeCounter;
+    // public Text timeCounter;
+    public TMP_Text timeCounterTMP;
 
     private float startTime;
     public float elapsedTime;
@@ -123,7 +124,7 @@ public class GameMaster : MonoBehaviour
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
 
             timePlayingStr = timePlaying.ToString("mm':'ss'.'ff");
-            timeCounter.text = timePlayingStr;
+            timeCounterTMP.text = timePlayingStr;
         }
     }
 
