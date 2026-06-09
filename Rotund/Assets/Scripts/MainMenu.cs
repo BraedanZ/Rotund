@@ -10,9 +10,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void QuitGame() {
-        
-        Debug.Log("Quit");
-        Application.Quit();
+    void Update() {
+        DetectInput();
+    }
+
+    private void DetectInput() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            PlayGame();
+        }
     }
 }

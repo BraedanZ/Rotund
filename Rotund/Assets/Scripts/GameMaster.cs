@@ -3,17 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameMaster : MonoBehaviour
 {
     public Player player;
 
-    public Text distanceText;
+    public TMP_Text distanceTextTMP;
 
     private float distance;
     private string distanceStr;
-
-    public Text timeCounter;
+ 
+    // public Text timeCounter;
+    public TMP_Text timeCounterTMP;
 
     private float startTime;
     public float elapsedTime;
@@ -77,7 +79,7 @@ public class GameMaster : MonoBehaviour
         startTime = Time.time;
         distance = 0f;
         distanceStr = distance.ToString() + "m";
-        distanceText.text = distanceStr;
+        distanceTextTMP.text = distanceStr;
         gameOverlay.SetActive(true);
         runEndPanel.SetActive(false);
         Time.timeScale = 1f;
@@ -122,15 +124,15 @@ public class GameMaster : MonoBehaviour
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
 
             timePlayingStr = timePlaying.ToString("mm':'ss'.'ff");
-            timeCounter.text = timePlayingStr;
+            timeCounterTMP.text = timePlayingStr;
         }
     }
 
     private void UpdateDistance() {
         if (player.transform.position.x > distance) {
-            distance = (float)Math.Round(player.transform.position.x);
-            distanceStr = distance.ToString() + "m";
-            distanceText.text = distanceStr;
+            distance = Mathf.Round(player.transform.position.x *10f) / 10f;
+            distanceStr = Mathf.Round(distance).ToString() + "m";
+            distanceTextTMP.text = distanceStr;
         }
     }
 }
