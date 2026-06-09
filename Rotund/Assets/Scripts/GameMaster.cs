@@ -14,7 +14,6 @@ public class GameMaster : MonoBehaviour
     private float distance;
     private string distanceStr;
  
-    // public Text timeCounter;
     public TMP_Text timeCounterTMP;
 
     private float startTime;
@@ -30,10 +29,11 @@ public class GameMaster : MonoBehaviour
     public bool gamePlaying { get; private set; }
 
     private string runEndDistanceStr;
-    public Text runEndDistanceText;
+    public TMP_Text runEndDistanceTextTMP;
 
     private string runEndTimeStr;
-    public Text runEndTimeText;
+
+    public TMP_Text runEndTimeTextTMP;
 
     private float bestDistance;
     private string bestDistanceStr;
@@ -41,8 +41,8 @@ public class GameMaster : MonoBehaviour
     private TimeSpan bestTime;
     private string bestTimeStr;
 
-    public Text bestDistanceText;
-    public Text bestTimeCounter;
+    public TMP_Text bestDistanceTextTMP;
+    public TMP_Text bestTimeCounterText;
 
     void Start()
     {
@@ -97,25 +97,25 @@ public class GameMaster : MonoBehaviour
         if (distance > bestDistance) {
             bestDistance = distance;
             bestDistanceStr = "Best Run Distance: " + bestDistance.ToString() + "m";
-            bestDistanceText.text = bestDistanceStr;
+            bestDistanceTextTMP.text = bestDistanceStr;
 
             bestTime = timePlaying;
             bestTimeStr = "Best Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
-            bestTimeCounter.text = bestTimeStr;
+            bestTimeCounterText.text = bestTimeStr;
         }
         if (distance == bestDistance && timePlaying < bestTime) {
             bestTime = timePlaying;
             bestTimeStr = "Best Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
-            bestTimeCounter.text = bestTimeStr;
+            bestTimeCounterText.text = bestTimeStr;
         }
     }
 
     private void UpdateCurrentRun() {
         runEndDistanceStr = "Run Distance : " + distance + "m";
-        runEndDistanceText.text = runEndDistanceStr;
+        runEndDistanceTextTMP.text = runEndDistanceStr;
 
         runEndTimeStr = "Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
-        runEndTimeText.text = runEndTimeStr;
+        runEndTimeTextTMP.text = runEndTimeStr;
     }
 
     private void UpdateTimer() {
