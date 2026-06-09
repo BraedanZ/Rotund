@@ -29,11 +29,9 @@ public class GameMaster : MonoBehaviour
     public bool gamePlaying { get; private set; }
 
     private string runEndDistanceStr;
-    // public Text runEndDistanceText;
     public TMP_Text runEndDistanceTextTMP;
 
     private string runEndTimeStr;
-    // public Text runEndTimeText;
 
     public TMP_Text runEndTimeTextTMP;
 
@@ -43,8 +41,8 @@ public class GameMaster : MonoBehaviour
     private TimeSpan bestTime;
     private string bestTimeStr;
 
-    public Text bestDistanceText;
-    public Text bestTimeCounter;
+    public TMP_Text bestDistanceTextTMP;
+    public TMP_Text bestTimeCounterText;
 
     void Start()
     {
@@ -99,16 +97,16 @@ public class GameMaster : MonoBehaviour
         if (distance > bestDistance) {
             bestDistance = distance;
             bestDistanceStr = "Best Run Distance: " + bestDistance.ToString() + "m";
-            bestDistanceText.text = bestDistanceStr;
+            bestDistanceTextTMP.text = bestDistanceStr;
 
             bestTime = timePlaying;
             bestTimeStr = "Best Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
-            bestTimeCounter.text = bestTimeStr;
+            bestTimeCounterText.text = bestTimeStr;
         }
         if (distance == bestDistance && timePlaying < bestTime) {
             bestTime = timePlaying;
             bestTimeStr = "Best Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
-            bestTimeCounter.text = bestTimeStr;
+            bestTimeCounterText.text = bestTimeStr;
         }
     }
 
