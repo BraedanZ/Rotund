@@ -129,8 +129,8 @@ public class GameMaster : MonoBehaviour
 
     private void UpdateDistance() {
         if (player.transform.position.x > distance) {
-            distance = (float)Math.Round(player.transform.position.x);
-            distanceStr = distance.ToString() + "m";
+            distance = Mathf.Round(player.transform.position.x *10f) / 10f;
+            distanceStr = Mathf.Round(distance).ToString() + "m";
             distanceTextTMP.text = distanceStr;
         }
     }
