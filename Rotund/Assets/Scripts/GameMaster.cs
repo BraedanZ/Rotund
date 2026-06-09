@@ -14,7 +14,6 @@ public class GameMaster : MonoBehaviour
     private float distance;
     private string distanceStr;
  
-    // public Text timeCounter;
     public TMP_Text timeCounterTMP;
 
     private float startTime;
@@ -30,10 +29,13 @@ public class GameMaster : MonoBehaviour
     public bool gamePlaying { get; private set; }
 
     private string runEndDistanceStr;
-    public Text runEndDistanceText;
+    // public Text runEndDistanceText;
+    public TMP_Text runEndDistanceTextTMP;
 
     private string runEndTimeStr;
-    public Text runEndTimeText;
+    // public Text runEndTimeText;
+
+    public TMP_Text runEndTimeTextTMP;
 
     private float bestDistance;
     private string bestDistanceStr;
@@ -112,10 +114,10 @@ public class GameMaster : MonoBehaviour
 
     private void UpdateCurrentRun() {
         runEndDistanceStr = "Run Distance : " + distance + "m";
-        runEndDistanceText.text = runEndDistanceStr;
+        runEndDistanceTextTMP.text = runEndDistanceStr;
 
         runEndTimeStr = "Run Time: " + timePlaying.ToString("mm':'ss'.'ff");
-        runEndTimeText.text = runEndTimeStr;
+        runEndTimeTextTMP.text = runEndTimeStr;
     }
 
     private void UpdateTimer() {
