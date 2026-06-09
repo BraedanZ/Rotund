@@ -13,7 +13,7 @@ public class GameMaster : MonoBehaviour
 
     private float distance;
     private string distanceStr;
-
+ 
     // public Text timeCounter;
     public TMP_Text timeCounterTMP;
 
