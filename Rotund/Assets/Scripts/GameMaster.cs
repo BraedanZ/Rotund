@@ -44,6 +44,9 @@ public class GameMaster : MonoBehaviour
     public TMP_Text bestDistanceTextTMP;
     public TMP_Text bestTimeCounterText;
 
+    private string runFinishLineTimeStr;
+    public TMP_Text runFinishLineTimeTextTMP;
+
     void Start()
     {
         SetStartVariables();
@@ -134,5 +137,10 @@ public class GameMaster : MonoBehaviour
             distanceStr = Mathf.Round(distance).ToString() + "m";
             distanceTextTMP.text = distanceStr;
         }
+    }
+
+    public void FinishLine()
+    {
+        return;
     }
 }

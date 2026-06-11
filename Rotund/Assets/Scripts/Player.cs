@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     // public float normalGravity = 2f;
     public float bigGravity = 2.5f;
     // public float extraBigGravity = 3f;
+    private bool finished = false;
 
     void Start()
     {
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
     } 
 
     public void Restart() {
+        finished = false;
         Small();
         player.transform.position = startPosition;
         rigidBody.velocity = Vector3.zero;
@@ -136,7 +138,7 @@ public class Player : MonoBehaviour
     }
 
     public void Small() {
-        if (small) {
+        if (small || finished) {
             return;
         } else {
             player.transform.localScale -= scaleChange;
@@ -151,7 +153,7 @@ public class Player : MonoBehaviour
     }
 
     public void Big() {
-        if (big) {
+        if (big || finished) {
             return;
         } else {
             player.transform.position += new Vector3(0f, 0.25f, 0f);
@@ -163,6 +165,14 @@ public class Player : MonoBehaviour
             big = true;
             speed = bigSpeed;
         }
+    }
+
+    public void FinishLine()
+    {
+        Big();
+        finished = true;
+        rigidBody.drag = 0.42f;
+        gameMaster.FinishLine();
     }
 
     // public void Small() {
