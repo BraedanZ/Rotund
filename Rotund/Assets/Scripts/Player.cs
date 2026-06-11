@@ -122,11 +122,6 @@ public class Player : MonoBehaviour
                 gameMaster.Restart();
             }
         }
-        // else if (Input.GetKeyDown(KeyCode.UpArrow)) {
-        //     Big();
-        // } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-        //     Small();
-        // }
     }
 
     private void ChangeSize() {
