@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            ChangeSize();
             startSwipePosition = Input.mousePosition;
         } else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
