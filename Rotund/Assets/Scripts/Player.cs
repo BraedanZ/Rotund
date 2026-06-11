@@ -45,6 +45,11 @@ public class Player : MonoBehaviour
     // public float extraBigGravity = 3f;
     private bool finished = false;
 
+    private Vector2 startSwipePosition;
+    private Vector2 endSwipePosition;
+
+    public float swipeThreshold = 75f;
+
     void Start()
     {
         player = this;
@@ -113,20 +118,23 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             ChangeSize();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            Vector3 mousePosition = Input.mousePosition;
-            if (mousePosition.x > Screen.width / 2)
-            {
-                ChangeSize();
-            } else if (mousePosition.y > Screen.height / 2) {
-                gameMaster.Restart();
-            }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            startSwipePosition = Input.mousePosition;
+        } else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            endSwipePosition = Input.mousePosition;
+            CheckSwipe();
         }
-        // else if (Input.GetKeyDown(KeyCode.UpArrow)) {
-        //     Big();
-        // } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-        //     Small();
-        // }
+    }
+
+    private void CheckSwipe()
+    {
+        Vector2 swipeVector = endSwipePosition - startSwipePosition;
+        if (swipeVector.magnitude > swipeThreshold)
+        {
+            gameMaster.Restart();
+        }
     }
 
     private void ChangeSize() {
