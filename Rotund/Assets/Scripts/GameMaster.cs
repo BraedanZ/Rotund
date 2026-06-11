@@ -73,6 +73,7 @@ public class GameMaster : MonoBehaviour
     }
 
     public void Restart() {
+        Lose();
         player.Restart();
         ResetVariables();
     }
