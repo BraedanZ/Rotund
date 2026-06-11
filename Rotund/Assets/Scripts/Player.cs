@@ -110,18 +110,18 @@ public class Player : MonoBehaviour
     }
 
     private void DetectInput() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) {
             ChangeSize();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            Vector3 mousePosition = Input.mousePosition;
-            if (mousePosition.x > Screen.width / 2)
-            {
-                ChangeSize();
-            } else if (mousePosition.y > Screen.height / 2) {
-                gameMaster.Restart();
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.Mouse0)) {
+        //     Vector3 mousePosition = Input.mousePosition;
+        //     if (mousePosition.x > Screen.width / 2)
+        //     {
+        //         ChangeSize();
+        //     } else if (mousePosition.y > Screen.height / 2) {
+        //         gameMaster.Restart();
+        //     }
+        // }
     }
 
     private void ChangeSize() {
