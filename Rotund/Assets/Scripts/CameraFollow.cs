@@ -35,7 +35,7 @@ public class CameraFollow : MonoBehaviour
     void Start () {
         cam = GetComponent<Camera>();
         SnapCamera();
-        Small();
+        Big();
     }
 
     void FixedUpdate () {

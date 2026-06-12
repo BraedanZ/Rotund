@@ -64,12 +64,13 @@ public class Player : MonoBehaviour
         player.transform.localScale -= scaleChange;
         rigidBody.mass = smallMass;
         rigidBody.gravityScale = smallGravity;
-        camera.Small();
+        camera.Big();
         small = true;
         big = false;
         speed = smallSpeed;
 
         lost = false;
+        Big();
     }
 
     // void FixedUpdate()
@@ -84,7 +85,8 @@ public class Player : MonoBehaviour
 
     public void Restart() {
         finished = false;
-        Small();
+        Big();
+        rigidBody.drag = 0.35f;
         player.transform.position = startPosition;
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = 0f;
