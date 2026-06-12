@@ -72,10 +72,10 @@ public class Player : MonoBehaviour
         lost = false;
     }
 
-    void FixedUpdate()
-    {
-        Move();
-    }      
+    // void FixedUpdate()
+    // {
+    //     Move();
+    // }      
 
     void Update() {
         DetectInput();
@@ -92,14 +92,14 @@ public class Player : MonoBehaviour
         camera.SnapCamera();
     }
 
-    private void Move() 
-    {
-        // input = Input.GetAxisRaw("Horizontal");
-        // rigidBody.AddForce(new Vector2(1, 0) * input * speed);
-        if (player.transform.position.x < 0) {
-            rigidBody.AddForce(new Vector2(1, 0) * 1.0f * speed);
-        }
-    }
+    // private void Move() 
+    // {
+    //     // input = Input.GetAxisRaw("Horizontal");
+    //     // rigidBody.AddForce(new Vector2(1, 0) * input * speed);
+    //     if (player.transform.position.x < 0) {
+    //         rigidBody.AddForce(new Vector2(1, 0) * 1.0f * speed);
+    //     }
+    // }
 
     private void TestMovement() {
         if (rigidBody.velocity.x <= 0 && player.transform.position.x > 0) {
