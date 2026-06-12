@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Balledle Main Menu.unity
     guid: 780e485589326c54091ebed1a7e697ee
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/Week24.unity
     guid: c142bb7e35f28774fb417b9259bc478b
   m_configObjects: {}
