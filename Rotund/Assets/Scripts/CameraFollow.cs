@@ -31,11 +31,21 @@ public class CameraFollow : MonoBehaviour
     // public Color normal;
     public Color big;
     // public Color extraBig;
+    // public Color[] endColors;
+    public Color doe;
+    public Color re;
+    public Color mi;
+    public Color fa;
+    public Color so;
+    public Color la;
+    public Color ti;    
+
 
     void Start () {
         cam = GetComponent<Camera>();
+        // endColors = new Color[] { doe, re, mi, fa, so, la, ti };
         SnapCamera();
-        Small();
+        Big();
     }
 
     void FixedUpdate () {
@@ -79,4 +89,32 @@ public class CameraFollow : MonoBehaviour
     // public void ExtraBig() {
     //     cam.backgroundColor = extraBig;
     // }
+    public void EndColors()
+    {
+        if (cam.backgroundColor == big)
+        {
+            cam.backgroundColor = doe;
+        } else if (cam.backgroundColor == doe)
+        {
+            cam.backgroundColor = re;
+        } else if (cam.backgroundColor == re)
+        {
+            cam.backgroundColor = mi;
+        } else if (cam.backgroundColor == mi)
+        {
+            cam.backgroundColor = fa;
+        } else if (cam.backgroundColor == fa)
+        {
+            cam.backgroundColor = so;
+        } else if (cam.backgroundColor == so)
+        {
+            cam.backgroundColor = la;
+        } else if (cam.backgroundColor == la)
+        {
+            cam.backgroundColor = ti;
+        } else if (cam.backgroundColor == ti)
+        {
+            cam.backgroundColor = doe;
+        }
+    }
 }
