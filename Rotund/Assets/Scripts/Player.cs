@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
     {
         Big();
         finished = true;
-        rigidBody.drag = 0.42f;
+        rigidBody.drag = 0.45f;
         gameMaster.FinishLine();
     }
 
