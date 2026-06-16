@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
     public void Restart() {
         finished = false;
         Big();
-        rigidBody.drag = 0.35f;
+        rigidBody.drag = 0.1f;
         player.transform.position = startPosition;
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = 0f;
@@ -181,9 +181,14 @@ public class Player : MonoBehaviour
     public void FinishLine()
     {
         Big();
+        IncreaseDrag();
         finished = true;
-        rigidBody.drag = 0.45f;
         gameMaster.FinishLine();
+    }
+
+    public void IncreaseDrag()
+    {
+        rigidBody.drag += 0.1f;
     }
 
     // public void Small() {
