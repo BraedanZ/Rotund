@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
         rigidBody.angularVelocity = 0f;
         lost = false;
         camera.SnapCamera();
+        camera.Big();
     }
 
     // private void Move() 
