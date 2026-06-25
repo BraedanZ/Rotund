@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
 
     public void IncreaseDrag()
     {
-        rigidBody.drag += 0.05f;
+        rigidBody.drag += 0.047f;
         // rigidBody.angularDrag += 0.025f;
     }
 
