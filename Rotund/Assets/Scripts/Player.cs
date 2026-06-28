@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         dayIndex = (int)currentDayOfWeek;
         player.transform.position = new Vector3(-2, -200 * dayIndex, 0);
         startPosition = player.transform.position;
+        camera.SnapCamera();
     }
 
     // private void Move() 

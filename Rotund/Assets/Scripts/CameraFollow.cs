@@ -44,7 +44,7 @@ public class CameraFollow : MonoBehaviour
     void Start () {
         cam = GetComponent<Camera>();
         // endColors = new Color[] { doe, re, mi, fa, so, la, ti };
-        SnapCamera();
+        // SnapCamera();
         Big();
     }
 
