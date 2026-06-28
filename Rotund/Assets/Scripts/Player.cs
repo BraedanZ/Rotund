@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class Player : MonoBehaviour
 
     public float swipeThreshold = 75f;
 
+    private DayOfWeek currentDayOfWeek;
+    private int dayIndex;
+
     void Start()
     {
         player = this;
@@ -59,8 +63,8 @@ public class Player : MonoBehaviour
         scaleChange = new Vector3(0.25f, 0.25f, 0.25f);
 
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
+        SetStartPosition();
 
-        startPosition = player.transform.position;
         player.transform.localScale -= scaleChange;
         rigidBody.mass = smallMass;
         rigidBody.gravityScale = smallGravity;
@@ -93,6 +97,14 @@ public class Player : MonoBehaviour
         lost = false;
         camera.SnapCamera();
         camera.Big();
+    }
+
+    private void SetStartPosition()
+    {
+        currentDayOfWeek = DateTime.Now.DayOfWeek;
+        dayIndex = (int)currentDayOfWeek;
+        player.transform.position = new Vector3(-2, -200 * dayIndex, 0);
+        startPosition = player.transform.position;
     }
 
     // private void Move() 
