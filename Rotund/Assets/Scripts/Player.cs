@@ -103,6 +103,9 @@ public class Player : MonoBehaviour
     {
         currentDayOfWeek = DateTime.Now.DayOfWeek;
         dayIndex = (int)currentDayOfWeek;
+
+        dayIndex = 6;
+
         player.transform.position = new Vector3(-2, -200 * dayIndex, 0);
         startPosition = player.transform.position;
     }
@@ -201,7 +204,7 @@ public class Player : MonoBehaviour
 
     public void IncreaseDrag()
     {
-        rigidBody.drag += 0.047f;
+        // rigidBody.drag += 0.047f;
         // rigidBody.angularDrag += 0.025f;
     }
 
